@@ -7,7 +7,7 @@ app.config['FREEZER_RELATIVE_URLS'] = True
 @freezer.register_generator
 def detail():
     for row in csv_list:
-        yield {'number': row['id']}
+        yield {'number': row['IDPIF']}
 
 
 if __name__ == '__main__':
