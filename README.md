@@ -16,6 +16,7 @@ Es una guia paso a paso de como publicar una aplicación de noticias.
 * Demostración: [http://gabelula.github.io/first-news-app/build/index.html](http://ireapps.github.io/first-news-app/build/index.html)
 * Documentación: [http://first-news-app.readthedocs.org/es/latest/](http://first-news-app.readthedocs.org/es/latest/)
 * Issues: [https://github.com/gabelula/first-news-app/issues](https://github.com/gabelula/first-news-app/issues)
+* Version en Ingles, por Ben Walsh: [https://github.com/ireapps/first-news-app/](https://github.com/ireapps/first-news-app/)
 
 ## Para clonar y usar localmente este código ##
 

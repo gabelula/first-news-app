@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>First News App</title>
+    <title>Primera Aplicación de Noticias</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='prettify.css') }}" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
     <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script>
@@ -10,10 +10,11 @@
 <body>
     <div id="map" style="width:100%; height:300px;"></div>
 
-    <h1>{{ object.full_name }}, a {{ object.age }} year old, {{ object.race|lower }} {{ object.gender|lower }} died on {{ object.date }}
-in a {{ object.type|lower }} at {{ object.address }} in {{ object.neighborhood }}.</h1>
+    <h1>Incendio en {{ objects['COMUNIDAD'] }}, {{ objects['PROVINCIA'] }}, {{ objects['COMARCA'] }}, {{ objects['MUNICIPIO'] }}</h1>
 
-    <p>{{ object.story }}</p>
+    <p>Superficie quemada de {{ objects['SUPQUEMADA'] }}. Han habido {{ objects[MUERTOS] }} muertos, {{ objects['HERIDOS'] }} heridos. El fuego se ha logrado controlar en {{ objects['TIME_CTRL'] }} minutos. Para controlarlo se han necesitado {{ objects['PERSONAL'] }} personas, {{ objects['PESADOS'] }} y {{ objects['AEREOS'] }}.</p>
+
+    <p>La causa del incendio ha sido {{ objects['CAUSA'] }}</p>
 
     <script type="text/javascript">
         var map = L.map('map').setView([{{ object.y }}, {{ object.x }}], 16);
@@ -25,7 +26,7 @@ in a {{ object.type|lower }} at {{ object.address }} in {{ object.neighborhood }
         });
         map.addLayer(mapquestLayer);
 
-        var marker = L.marker([{{ object.y }}, {{ object.x }}]).addTo(map);
+        var marker = L.marker([{{ object['LATITUD'] }}, {{ object['LONGITUD'] }}]).addTo(map);
     </script>
 </body>
 </html>

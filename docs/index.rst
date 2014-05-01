@@ -1147,19 +1147,16 @@ Commitear todas las páginas estaticos al repositorio.
 .. code-block:: bash
 
     $ git add .
-    $ git commit -m "Estatize mi app"
+    $ git commit -m "Estaticos de mi app"
     $ git push origin master
 
-Finally, we will publish these static files to the web using `GitHub's Pages <http://pages.github.com/>`_ feature. All it
-requires is that we create a new branch in our repository called ``gh-pages`` and push our files
-up to GitHub there. Keep in mind there are many other options for publishing flat files, ranging from
-`Dropbox <https://en.wikipedia.org/wiki/Dropbox_%28service%29>`_
-to `Amazon's S3 service <https://en.wikipedia.org/wiki/Amazon_S3>`_.
+Finalmente, publicaremos estos archivos estáticos a la web usando `GitHub's Pages <http://pages.github.com/>`_. Lo único que necesitamos es crear un nuevo branch en nuestro repositorio llamado ``gh-pages`` y publicar nuestros archivos alli en GitHub. Recuerda que hay muchas otras opciones para publicar archivos estáticos, desde `Dropbox <https://en.wikipedia.org/wiki/Dropbox_%28service%29>`_
+a `Amazon's S3 service <https://en.wikipedia.org/wiki/Amazon_S3>`_.
 
 .. code-block:: bash
 
-    $ git checkout -b gh-pages # Create the new branch
-    $ git merge master # Pull in all the code from the master branch
-    $ git push origin gh-pages # Push up to GitHub from your new branch
+    $ git checkout -b gh-pages # Crea una nueva branch
+    $ git merge master # Levantar todo el código desde el branch master
+    $ git push origin gh-pages # Publicarlo en GitHub desde tu nueva branch
 
-Now wait a minute or two, then visit ``http://<yourusername>.github.io/first-news-app/build/index.html`` to cross the finish line.
+En un o dos minutos, puedes visitar ``http://<yourusername>.github.io/first-news-app/build/index.html`` para ver tu aplicación publicada en la web.

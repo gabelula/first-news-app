@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>First News App</title>
+    <title>Primera Aplicación de Noticias</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='prettify.css') }}" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
     <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script>
@@ -10,33 +10,33 @@
 <body>
     <div id="map" style="width:100%; height:300px;"></div>
 
-    <h1>Deaths during the L.A. riots</h1>
+    <h1>Incendios en España</h1>
 
     <table border=1 cellpadding=7>
         <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Address</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Race</th>
+            <th>Comunidad</th>
+            <th>Superficie</th>
+            <th>Muertos</th>
+            <th>Heridos</th>
+            <th>Fecha</th>
+            <th>Tiempo para Controlar</th>
+            <th>Causa</th>
         </tr>
     {% for obj in object_list %}
         <tr>
-            <td><a href="{{ obj.id }}/">{{ obj.full_name }}</a></td>
-            <td>{{ obj.date }}</td>
-            <td>{{ obj.type }}</td>
-            <td>{{ obj.address }}</td>
-            <td>{{ obj.age }}</td>
-            <td>{{ obj.gender }}</td>
-            <td>{{ obj.race }}</td>
+            <td><a href="{{ obj['IDPIF'] }}/">{{ obj['COMUNIDAD'] }}</a></td>
+            <td>{{ obj['SUPQUEMADA'] }}</td>
+            <td>{{ obj['MUERTOS'] }}</td>
+            <td>{{ obj['HERIDOS'] }}</td>
+            <td>{{ obj['FECHA'] }}</td>
+            <td>{{ obj['TIME_CTRL'] }}</td>
+            <td>{{ obj['CAUSA'] }}</td>
         </tr>
     {% endfor %}
     </table>
 
     <script type="text/javascript">
-        var map = L.map('map').setView([34.055, -118.35], 9);
+        var map = L.map('map').setView([40.2085,-3.713], 6);
 
         var mapquestLayer = new L.TileLayer('http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
             maxZoom: 18,
@@ -52,12 +52,12 @@
             {
               "type": "Feature",
               "properties": {
-                "full_name": "{{ obj.full_name }}",
-                "id": "{{ obj.id }}"
+                "causa": "{{ obj['CAUSA'] }}",
+                "id": "{{ obj['IDPIF'] }}"
               },
               "geometry": {
                 "type": "Point",
-                "coordinates": [{{ obj.x }}, {{ obj.y }}]
+                "coordinates": [{{ obj['LONGITUD'] }}, {{ obj['LATITUD'] }}]
               }
             }{% if not loop.last %},{% endif %}
             {% endfor %}
@@ -67,7 +67,7 @@
             onEachFeature: function(feature, layer) {
                 layer.bindPopup(
                     '<a href="' + feature.properties.id + '/">' +
-                        feature.properties.full_name +
+                        feature.properties.causa +
                     '</a>'
                 );
             }
