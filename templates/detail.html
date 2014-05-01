@@ -10,14 +10,14 @@
 <body>
     <div id="map" style="width:100%; height:300px;"></div>
 
-    <h1>Incendio en {{ objects['COMUNIDAD'] }}, {{ objects['PROVINCIA'] }}, {{ objects['COMARCA'] }}, {{ objects['MUNICIPIO'] }}</h1>
+    <h1>Incendio en {{ object['COMUNIDAD'].decode('UTF-8') }}, {{ object['PROVINCIA'].decode('UTF-8') }}, {{ object['COMARCA'].decode('UTF-8') }}, {{ object['MUNICIPIO'].decode('UTF-8') }} detectado el {{ object['FECHA'] }}</h1>
 
-    <p>Superficie quemada de {{ objects['SUPQUEMADA'] }}. Han habido {{ objects[MUERTOS] }} muertos, {{ objects['HERIDOS'] }} heridos. El fuego se ha logrado controlar en {{ objects['TIME_CTRL'] }} minutos. Para controlarlo se han necesitado {{ objects['PERSONAL'] }} personas, {{ objects['PESADOS'] }} y {{ objects['AEREOS'] }}.</p>
+    <p>Superficie quemada de {{ object['SUPQUEMADA'] }}. Han habido {{ object['MUERTOS'] }} muertos y {{ object['HERIDOS'] }} heridos. El fuego se ha logrado controlar en {{ object['TIME_CTRL'] }} minutos. Para extingirlo se han necesitado {{ object['PERSONAL'] }} personas, {{ object['PESADOS'] }} vehiculos pesados y {{ object['AEREOS'] }} medios aereos.</p>
 
-    <p>La causa del incendio ha sido {{ objects['CAUSA'] }}</p>
+    <p>La causa del incendio ha sido <b>{{ object['CAUSA'].decode('UTF-8') }}</b>.</p>
 
     <script type="text/javascript">
-        var map = L.map('map').setView([{{ object.y }}, {{ object.x }}], 16);
+        var map = L.map('map').setView([{{ object['LATITUD'] }}, {{ object['LONGITUD'] }}], 16);
 
         var mapquestLayer = new L.TileLayer('http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
             maxZoom: 18,

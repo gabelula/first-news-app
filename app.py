@@ -7,7 +7,7 @@ app = Flask(__name__)
 csv_path = './static/incendios.csv'
 csv_obj = csv.DictReader(open(csv_path, 'r'))
 csv_list = list(csv_obj)
-csv_dict = dict([[o['id'], o] for o in csv_list])
+csv_dict = dict([[o['IDPIF'], o] for o in csv_list])
 
 
 @app.route("/")

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Primera Aplicación de Noticias</title>
@@ -19,18 +19,18 @@
             <th>Muertos</th>
             <th>Heridos</th>
             <th>Fecha</th>
-            <th>Tiempo para Controlar</th>
+            <th>Tiempo para Controlarlo</th>
             <th>Causa</th>
         </tr>
     {% for obj in object_list %}
         <tr>
-            <td><a href="{{ obj['IDPIF'] }}/">{{ obj['COMUNIDAD'] }}</a></td>
+            <td><a href="{{ obj['IDPIF'] }}/">{{ obj['COMUNIDAD'].decode('UTF-8') }}</a></td>
             <td>{{ obj['SUPQUEMADA'] }}</td>
             <td>{{ obj['MUERTOS'] }}</td>
             <td>{{ obj['HERIDOS'] }}</td>
             <td>{{ obj['FECHA'] }}</td>
             <td>{{ obj['TIME_CTRL'] }}</td>
-            <td>{{ obj['CAUSA'] }}</td>
+            <td>{{ obj['CAUSA'].decode('UTF-8') }}</td>
         </tr>
     {% endfor %}
     </table>
@@ -52,7 +52,7 @@
             {
               "type": "Feature",
               "properties": {
-                "causa": "{{ obj['CAUSA'] }}",
+                "causa": "{{ obj['CAUSA'].decode('UTF-8') }}",
                 "id": "{{ obj['IDPIF'] }}"
               },
               "geometry": {
